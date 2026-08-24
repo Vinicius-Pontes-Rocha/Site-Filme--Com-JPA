@@ -15,7 +15,7 @@ public class ConsultaGemini {
 
     public static String obterTraducao(String texto) {
         try {
-            String prompt = "traduza para o português o texto: " + texto;
+            String prompt = "traduza para o português o texto de forma literal: " + texto;
 
             String corpoRequisicao = """
                 {

@@ -7,7 +7,7 @@ public class Episodio {
     private Integer temporada;
     private String titulo;
     private Integer numeroEpisodio;
-    private Double avaliacao;
+    private double avaliacao;
     private LocalDate dataLancamento;
 
     public Episodio(Integer numeroTemporada, DadosEpisodio dadosEpisodio) {
@@ -53,7 +53,7 @@ public class Episodio {
     }
 
     public Double getAvaliacao() {
-        return avaliacao;
+        return (Double) avaliacao;
     }
 
     public void setAvaliacao(Double avaliacao) {
