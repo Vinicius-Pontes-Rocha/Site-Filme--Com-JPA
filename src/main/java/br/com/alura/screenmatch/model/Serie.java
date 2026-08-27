@@ -2,7 +2,7 @@ package br.com.alura.screenmatch.model;
 
 import br.com.alura.screenmatch.service.ConsultaGemini;
 import jakarta.persistence.*;
-
+import jakarta.persistence.Column;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
@@ -24,13 +24,16 @@ public class Serie {
         @Enumerated(EnumType.STRING)
         private Categoria genero;
 
+        @Column(columnDefinition = "TEXT")
         private String atores;
 
         private String poster;
-
+        @Column(columnDefinition = "TEXT")
         private String sinopse;
 
-        @Transient
+
+
+    @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
         private List<Episodio> episodios = new ArrayList<>();
 
     public Serie() {}
@@ -105,20 +108,25 @@ public class Serie {
 
     public List<Episodio> getEpisodios() {return episodios;}
 
-    public void setEpisodios(List<Episodio> episodios) {this.episodios = episodios;}
+    public void setEpisodios(List<Episodio> episodios) {
+        episodios.forEach(e -> e.setSerie(this));
+
+        this.episodios = episodios;
+    }
+
 
 
     @Override
     public String toString() {
-        return "Serie{" +
+        return
                 "genero=" + genero +
-                ", titulo='" + titulo + '\'' +
-                ", totalTemporadas=" + totalTemporadas +
-                ", avaliacao=" + avaliacao +
-                ", atores='" + atores + '\'' +
-                ", poster='" + poster + '\'' +
-                ", sinopse'" + sinopse + '\'' +
-                '}';
+                        ", titulo='" + titulo + '\'' +
+                        ", totalTemporadas=" + totalTemporadas +
+                        ", avaliacao=" + avaliacao +
+                        ", atores='" + atores + '\'' +
+                        ", poster='" + poster + '\'' +
+                        ", sinopse='" + sinopse + '\'' +
+                        ", episodios='" + episodios + '\'';
     }
     }
 

@@ -9,7 +9,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConsultaGemini {
-
+    //Chave:API Key gemini
     private static final String API_KEY = "Chave:API Key gemini";
     private static final String ENDERECO = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=" + API_KEY;
 
